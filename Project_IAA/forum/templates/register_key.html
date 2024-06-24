@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Register Security Key</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Register Security Key</h5>
+                    <button id="registerKeyBtn" class="btn btn-primary btn-block">Register Security Key</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#registerKeyBtn').click(function () {
+            $.get('/register_key', function (options) {
+                navigator.credentials.create({publicKey: options}).then(function (credential) {
+                    const attestationObject = credential.response.attestationObject;
+                    const clientDataJSON = credential.response.clientDataJSON;
+
+                    $.ajax({
+                        url: '/register_key',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            attestationObject: attestationObject,
+                            clientDataJSON: clientDataJSON
+                        }),
+                        success: function (response) {
+                            alert('Security key registered successfully!');
+                        },
+                        error: function () {
+                            alert('Failed to register security key.');
+                        }
+                    });
+                }).catch(function (err) {
+                    console.error(err);
+                    alert('Failed to register security key.');
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>

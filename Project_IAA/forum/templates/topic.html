@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>{{ topic.title }}</h1>
+    <p>Created by {{ topic.user.username }} on {{ topic.date_created.strftime('%Y-%m-%d') }}</p>
+    <hr>
+    <h2>Messages</h2>
+    <ul class="list-group mb-3">
+        {% for message in messages %}
+            <li class="list-group-item">
+                {{ message.content }}
+                <small class="float-right">Posted by {{ message.user.username }}
+                    on {{ message.date_posted.strftime('%Y-%m-%d %H:%M:%S') }}</small>
+                {% if message.user_id == current_user.id or current_user.is_admin %}
+                    <form method="POST" action="{{ url_for('main.delete_message', message_id=message.id) }}"
+                          style="display:inline;">
+                        <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
+                    </form>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <h2>Post a Message</h2>
+    <form method="POST" action="">
+        {{ form.hidden_tag() }}
+        <div class="form-group">
+            {{ form.content.label(class="form-control-label") }}
+            {{ form.content(class="form-control") }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary") }}
+        </div>
+    </form>
+{% endblock %}

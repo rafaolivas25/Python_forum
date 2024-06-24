@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="container mt-4">
+        <h2>Registration Successful</h2>
+        <div class="alert alert-success" role="alert">
+            Your account has been created successfully!
+        </div>
+        <div class="alert alert-warning" role="alert">
+            Please copy your private key below. You will need it for authentication.
+        </div>
+        <div class="form-group">
+            <label for="privateKey">Your Private Key:</label>
+            <textarea class="form-control" id="privateKey" rows="10" readonly>{{ private_key }}</textarea>
+        </div>
+        <a href="{{ url_for('auth.login') }}" class="btn btn-primary">Go to Login</a>
+    </div>
+{% endblock %}

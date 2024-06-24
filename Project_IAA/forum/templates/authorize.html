@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Authorize Application</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
+
+        .header {
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            color: white;
+            padding: 20px;
+            border-radius: 15px 15px 0 0;
+            margin: -30px -30px 20px -30px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8em;
+        }
+
+        .form-group label {
+            font-weight: bold;
+            text-align: left;
+            display: block;
+        }
+
+        .form-control {
+            border-radius: 25px;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .btn-primary i {
+            margin-right: 10px;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #8e44ad, #3498db);
+        }
+
+        .btn-secondary {
+            background: #ccc;
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+
+        .btn-secondary:hover {
+            background: #bbb;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Authorize Application</h1>
+    </div>
+    <form method="POST" action="">
+        <div class="form-group">
+            <label for="client_id">Client ID</label>
+            <input type="text" class="form-control" id="client_id" name="client_id" value="{{ client_id }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="scope">Requested Scope</label>
+            <input type="text" class="form-control" id="scope" name="scope" value="{{ scope }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="redirect_uri">Redirect URI</label>
+            <input type="text" class="form-control" id="redirect_uri" name="redirect_uri" value="{{ redirect_uri }}"
+                   readonly>
+        </div>
+        <button type="submit" class="btn btn-primary"><i class="fas fa-check"></i> Authorize</button>
+        <a href="{{ url_for('main.home') }}" class="btn btn-secondary"><i class="fas fa-times"></i> Cancel</a>
+    </form>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

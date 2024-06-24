@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <div class="content-section"
+         style="max-width: 600px; margin: auto; padding: 30px; background: #fff; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+        <h2 style="text-align: center; color: #333;">Register</h2>
+        <form method="POST" action="{{ url_for('auth.register') }}" id="registration-form">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label(class="form-label") }}
+                {{ form.username(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label(class="form-label") }}
+                {{ form.email(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label(class="form-label") }}
+                {{ form.password(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.confirm_password.label(class="form-label") }}
+                {{ form.confirm_password(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.phone_number.label(class="form-label") }}
+                {{ form.phone_number(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.address.label(class="form-label") }}
+                {{ form.address(class="form-control") }}
+            </div>
+            <div class="form-group">
+                {{ form.mfa_method.label(class="form-label") }}
+                {{ form.mfa_method(class="form-control") }}
+            </div>
+
+            <div id="otp-fields" class="mfa-fields" style="display: none; margin-top: 20px;">
+                <p>OTP will be sent to your email or phone.</p>
+            </div>
+
+            <div id="security-questions-fields" class="mfa-fields" style="display: none; margin-top: 20px;">
+                <div class="form-group">
+                    {{ form.security_question_1.label(class="form-label") }}
+                    {{ form.security_question_1(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.security_answer_1.label(class="form-label") }}
+                    {{ form.security_answer_1(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.security_question_2.label(class="form-label") }}
+                    {{ form.security_question_2(class="form-control") }}
+                </div>
+                <div class="form-group">
+                    {{ form.security_answer_2.label(class="form-label") }}
+                    {{ form.security_answer_2(class="form-control") }}
+                </div>
+            </div>
+
+            <div id="hardware-key-fields" class="mfa-fields" style="display: none; margin-top: 20px;">
+                <p>A hardware key will be generated for you.</p>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-block"
+                    style="background: linear-gradient(90deg, #3498db, #8e44ad); border: none;">Register
+            </button>
+        </form>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const mfaMethodField = document.querySelector('select[name="mfa_method"]');
+            const otpFields = document.getElementById('otp-fields');
+            const securityQuestionsFields = document.getElementById('security-questions-fields');
+            const hardwareKeyFields = document.getElementById('hardware-key-fields');
+
+            function updateMfaFields() {
+                const selectedMethod = mfaMethodField.value;
+                console.log('Selected MFA method:', selectedMethod);
+                otpFields.style.display = 'none';
+                securityQuestionsFields.style.display = 'none';
+                hardwareKeyFields.style.display = 'none';
+
+                if (selectedMethod === 'otp') {
+                    otpFields.style.display = 'block';
+                } else if (selectedMethod === 'security_questions') {
+                    securityQuestionsFields.style.display = 'block';
+                } else if (selectedMethod === 'hardware_key') {
+                    hardwareKeyFields.style.display = 'block';
+                }
+            }
+
+            mfaMethodField.addEventListener('change', updateMfaFields);
+            updateMfaFields();
+
+            document.getElementById('registration-form').addEventListener('submit', function (event) {
+                console.log('Form submitted');
+            });
+        });
+    </script>
+{% endblock %}

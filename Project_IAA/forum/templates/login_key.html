@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Authenticate with Security Key</title>
+</head>
+<body>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-body">
+                    <h5 class="card-title text-center">Authenticate with Security Key</h5>
+                    <button id="loginKeyBtn" class="btn btn-primary btn-block">Authenticate with Security Key</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#loginKeyBtn').click(function () {
+            $.get('/login_key', function (options) {
+                navigator.credentials.get({publicKey: options}).then(function (assertion) {
+                    const authenticatorData = assertion.response.authenticatorData;
+                    const clientDataJSON = assertion.response.clientDataJSON;
+                    const signature = assertion.response.signature;
+
+                    $.ajax({
+                        url: '/login_key',
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            authenticatorData: authenticatorData,
+                            clientDataJSON: clientDataJSON,
+                            signature: signature
+                        }),
+                        success: function (response) {
+                            alert('Authentication successful!');
+                        },
+                        error: function () {
+                            alert('Failed to authenticate.');
+                        }
+                    });
+                }).catch(function (err) {
+                    console.error(err);
+                    alert('Failed to authenticate.');
+                });
+            });
+        });
+    });
+</script>
+</body>
+</html>

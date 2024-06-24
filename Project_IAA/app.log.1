@@ -1,0 +1,161 @@
+Login failed for user: ruca@gmail.com
+Exception on /register [POST]
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\wtforms\validators.py", line 401, in __call__
+    import email_validator
+ModuleNotFoundError: No module named 'email_validator'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 1455, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 869, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 867, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\flask\app.py", line 852, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\zjale\Downloads\Project\Project\forum\auth.py", line 90, in register
+    if form.validate():
+       ^^^^^^^^^^^^^^^
+  File "C:\Users\zjale\Downloads\Project\Project\forum\forms.py", line 40, in validate
+    if not FlaskForm.validate(self):
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\wtforms\form.py", line 329, in validate
+    return super().validate(extra)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\wtforms\form.py", line 146, in validate
+    if not field.validate(self, extra):
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\wtforms\fields\core.py", line 246, in validate
+    stop_validation = self._run_validation_chain(form, chain)
+                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Python312\Lib\site-packages\wtforms\fields\core.py", line 266, in _run_validation_chain
+    validator(form, self)
+  File "C:\Python312\Lib\site-packages\wtforms\validators.py", line 403, in __call__
+    raise Exception(
+Exception: Install 'email_validator' for email validation support.
+Registration form submitted with data: {'username': 'ruca', 'email': 'ruca@gmail.com', 'password': 'ruca', 'confirm_password': 'ruca', 'phone_number': '134435467657', 'address': 'sadads', 'mfa_method': 'none', 'security_question_1': '', 'security_answer_1': '', 'security_question_2': '', 'security_answer_2': '', 'hardware_key_public': None, 'submit': False, 'csrf_token': 'ImUxNmY1YWJmNjY0YWJiMjFjMzkwYWI3OWFlZWE0MTU0ZTM1ODEwNzQi.Zl3drA.rqz-cmYJfN5Dw1NESvKWR71lVKg'}
+User ruca registered successfully.
+Registration form submitted with data: {'username': 'ruca', 'email': 'ruca@gmail.com', 'password': 'ruca', 'confirm_password': 'ruca', 'phone_number': '9237485673', 'address': 'aveiro', 'mfa_method': 'otp', 'security_question_1': '', 'security_answer_1': '', 'security_question_2': '', 'security_answer_2': '', 'hardware_key_public': None, 'submit': False, 'csrf_token': 'IjA2ZDZkZDE5ZTkzOTNmY2FmOTQ3ZjMzODk5YTc4ZmI3MGZjYzY0YTEi.ZmGdWg.iO63Ou_d350_j8nOixOPxBIFXBI'}
+Generated OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+User ruca registered successfully.
+Generated OTP code: 087945
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 087945
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 087945
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 087945
+Verifying OTP for user ruca@gmail.com with code 087945
+OTP verification result for user ruca@gmail.com: True
+Registration form submitted with data: {'username': 'ze', 'email': 'ze@gmail.com', 'password': 'ze', 'confirm_password': 'ze', 'phone_number': '9283746583', 'address': 'aveiro', 'mfa_method': 'hardware_key', 'security_question_1': '', 'security_answer_1': '', 'security_question_2': '', 'security_answer_2': '', 'hardware_key_public': None, 'submit': False, 'csrf_token': 'IjA2ZDZkZDE5ZTkzOTNmY2FmOTQ3ZjMzODk5YTc4ZmI3MGZjYzY0YTEi.ZmGdpA.tegh96NvCnLqm-VG8SC0_4aPty0'}
+User ze registered successfully.
+Generated OTP code: 754011
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 754011
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 754011
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 754011
+Verifying OTP for user ruca@gmail.com with code 754011
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 754011
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 754011
+Verifying OTP for user ruca@gmail.com with code 754011
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 754011
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 754011
+Verifying OTP for user ruca@gmail.com with code 754011
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 754011
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 754011
+Verifying OTP for user ruca@gmail.com with code 754011
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+Generated OTP code: 756752
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 756752
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 756752
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 756752
+Verifying OTP for user ruca@gmail.com with code 756752
+OTP verification result for user ruca@gmail.com: True
+Registration form submitted with data: {'username': 'ana', 'email': 'ana@gmail.com', 'password': 'ana', 'confirm_password': 'ana', 'phone_number': '9238475837', 'address': 'lisboa', 'mfa_method': 'none', 'security_question_1': '', 'security_answer_1': '', 'security_question_2': '', 'security_answer_2': '', 'hardware_key_public': None, 'submit': False, 'csrf_token': 'ImJmYTQ0NzJhYTQwMTliZTkzMjM5NDEyNDVkYzM5YjU5OTY1YWMwOWQi.ZmGlSQ.Dsr0oqIRv8w3sE9I4mWxb0whWuE'}
+User ana registered successfully.
+Generated OTP code: 617485
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 617485
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 617485
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 617485
+Verifying OTP for user ruca@gmail.com with code 617485
+OTP verification result for user ruca@gmail.com: True
+Generated OTP code: 915321
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 915321
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 915321
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 915321
+Verifying OTP for user ruca@gmail.com with code 915321
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 915321
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 915321
+Verifying OTP for user ruca@gmail.com with code 915321
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 915321
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 915321
+Verifying OTP for user ruca@gmail.com with code 915321
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 915321
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 915321
+Verifying OTP for user ruca@gmail.com with code 915321
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+Generated OTP code: 134811

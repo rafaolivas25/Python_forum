@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .navbar {
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            color: white;
+        }
+
+        .navbar-brand, .nav-link {
+            color: white !important;
+        }
+
+        .navbar-brand:hover, .nav-link:hover {
+            color: #ddd !important;
+        }
+
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        .card {
+            margin-top: 20px;
+        }
+
+        .jumbotron {
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            color: white;
+            border-radius: 10px;
+            padding: 30px;
+        }
+
+        .card-header {
+            background-color: #f8f9fa;
+        }
+
+        .btn-primary {
+            background: linear-gradient(90deg, #3498db, #8e44ad);
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(90deg, #8e44ad, #3498db);
+        }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="{{ url_for('main.home') }}">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse">
+        <ul class="navbar-nav mr-auto">
+            {% if current_user.role == 'admin' %}
+                <li class="nav-item">
+                    <a class="btn btn-primary" href="{{ url_for('auth.assign_role') }}">Assign Roles</a>
+                </li>
+            {% endif %}
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('auth.logout') }}">Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome, {{ current_user.username }}!</h1>
+        <p class="lead">This is your dashboard where you can see your account details and perform actions based on your
+            role.</p>
+        <hr class="my-4">
+        <p>Your email: {{ current_user.email }}</p>
+        <p>Last
+            login: {{ current_user.last_login.strftime('%Y-%m-%d %H:%M:%S') if current_user.last_login else 'Never' }}</p>
+        <p>Your role: {{ current_user.role }}</p>
+    </div>
+    <div class="card">
+        <div class="card-header">
+            Quick Actions
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Manage your account</h5>
+            <p class="card-text">Update your profile, change your password, and more.</p>
+            <a href="{{ url_for('auth.account') }}" class="btn btn-primary">Go to Account Settings</a>
+        </div>
+    </div>
+    {% if current_user.role == 'admin' %}
+        <div class="card">
+            <div class="card-header">
+                Admin Actions
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">Assign Roles</h5>
+                <p class="card-text">Assign roles to users to manage access to different parts of the system.</p>
+                <a href="{{ url_for('auth.assign_role') }}" class="btn btn-primary">Assign Roles</a>
+            </div>
+        </div>
+    {% endif %}
+    <div class="card mt-4">
+        <div class="card-header">
+            Forum
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Topics</h5>
+            <a href="{{ url_for('main.new_topic') }}" class="btn btn-primary mb-3">Create New Topic</a>
+            <ul class="list-group">
+                {% for topic in topics %}
+                    <li class="list-group-item">
+                        <a href="{{ url_for('main.topic', topic_id=topic.id) }}">{{ topic.title }}</a>
+                        <small class="float-right">Created by {{ topic.user.username }}
+                            on {{ topic.date_created.strftime('%Y-%m-%d') }}</small>
+                        {% if topic.user_id == current_user.id or current_user.is_admin %}
+                            <form method="POST" action="{{ url_for('main.delete_topic', topic_id=topic.id) }}"
+                                  style="display:inline;">
+                                <button type="submit" class="btn btn-danger btn-sm float-right">Delete</button>
+                            </form>
+                        {% endif %}
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 134811
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 134811
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 134811
+Verifying OTP for user ruca@gmail.com with code 134811
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 134811
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 134811
+Verifying OTP for user ruca@gmail.com with code 134811
+OTP verification result for user ruca@gmail.com: False
+Invalid OTP code entered for user: ruca@gmail.com
+Generated OTP code: 752010
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 752010
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 752010
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 752010
+Verifying OTP for user ruca@gmail.com with code 752010
+OTP verification result for user ruca@gmail.com: True
+Registration form submitted with data: {'username': 'jonas', 'email': 'jonas@gmail.com', 'password': 'jonas', 'confirm_password': 'jonas', 'phone_number': '9237485673', 'address': 'lisboa', 'mfa_method': 'hardware_key', 'security_question_1': '', 'security_answer_1': '', 'security_question_2': '', 'security_answer_2': '', 'hardware_key_public': None, 'submit': False, 'csrf_token': 'IjM3NTNkOTQyNzk4ZjVlYjBiODgxMzg5MzZiODhmNjJmMWU3NGQ4YTEi.ZmMWVg.iY_vwRFKa7ubmH_95j23oT5JYa0'}
+User jonas registered successfully.
+Registration form submitted with data: {'username': 'teste', 'email': 'teste@gmail.com', 'password': 'teste', 'confirm_password': 'teste', 'phone_number': '9123456721', 'address': 'aveiro', 'mfa_method': 'security_questions', 'security_question_1': 'Qual o nome do teu gato?', 'security_answer_1': 'Oliver', 'security_question_2': 'Qual o nome do teu outro gato?', 'security_answer_2': 'Benji', 'hardware_key_public': None, 'submit': False, 'csrf_token': 'IjM3NTNkOTQyNzk4ZjVlYjBiODgxMzg5MzZiODhmNjJmMWU3NGQ4YTEi.ZmMW5A.MNMCSJxEmxywIQQxIJvyPu3NE1c'}
+User teste registered successfully.
+Rendering security questions verification form for user: teste@gmail.com
+Verify security questions form submitted with data: {'security_question_1': 'Qual o nome do teu gato?', 'security_answer_1': 'Oliver', 'security_question_2': 'Qual o nome do teu outro gato?', 'security_answer_2': 'Benji', 'submit': True, 'csrf_token': 'IjM3NTNkOTQyNzk4ZjVlYjBiODgxMzg5MzZiODhmNjJmMWU3NGQ4YTEi.ZmMXJw.UsvMEVLgmudUbMVJmS9tCHSaXyo'}
+User answers in DB: Oliver, Benji
+Provided answers: Oliver, Benji
+Security questions verified successfully for user: teste@gmail.com
+Generated OTP code: 374305
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 374305
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 374305
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 374305
+Verifying OTP for user ruca@gmail.com with code 374305
+OTP verification result for user ruca@gmail.com: True
+Current user: User('ruca', 'ruca@gmail.com', 'default.jpg')
+Is admin: True
+Current user: User('ruca', 'ruca@gmail.com', 'default.jpg')
+Is admin: True
+Generated OTP code: 158912
+OTP email sent to user: ruca@gmail.com
+OTP email sent to user: ruca@gmail.com
+GET request received at verify_otp for user: ruca@gmail.com
+Generated OTP code: 158912
+OTP email sent to user: ruca@gmail.com
+Sent OTP email to user: ruca@gmail.com
+POST request received at verify_otp for user: ruca@gmail.com
+OTP code submitted: 158912
+User OTP secret: Z7KWW7L37XLXVZ5MIIKDX4ANGT3W44K2
+Calling verify_totp with user: User('ruca', 'ruca@gmail.com', 'default.jpg'), otp_code: 158912
+Verifying OTP for user ruca@gmail.com with code 158912
+OTP verification result for user ruca@gmail.com: True
+Current user: User('ruca', 'ruca@gmail.com', 'default.jpg')
+Is admin: True
+Current user: User('ruca', 'ruca@gmail.com', 'default.jpg')
+Is admin: True
